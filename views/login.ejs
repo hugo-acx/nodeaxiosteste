@@ -26,31 +26,29 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="100px" class="rounded mb-2" alt="User icon">
                             <p class="p-color"><b>Acesso ao sistema</b></p>
                         </div>
-                        <form action="#" class="login-form">
+                        <form action="/login" method="post" class="login-form">
                             <div class="mb-3">
-                                <input type="text" class="form-control r50 acesso" placeholder="Usuário" id="_login">
+                                <input name="usuario" type="text" class="form-control r50 acesso" placeholder="Usuário" id="_login">
                                 <span class="iconspan"><i class="fa fa-user"></i></span>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control r50 acesso" placeholder="Senha" id="_senha">
+                                <input name="senha" type="password" class="form-control r50 acesso" placeholder="Senha" id="_senha">
                                 <span class="iconspan"><i class="fa fa-lock"></i></span>
                             </div>
                             <div class="mb-3">
-                                <!-- <input type="text" class="form-control r50"> -->
-                                <select required class="form-control r50" id="_empresa">
+                                <select name="empresa" required class="form-control r50" id="_empresa">
                                     <option value="" disabled selected hidden>Selecione Empresa</option>
                                 </select>
                                 <span class="iconspan"><i class="fa fa-database"></i></span>
                             </div>
                             <div class="mb-3">
-                                <!-- <input type="text" class="form-control r50"> -->
-                                <select required class="form-control r50" id="_estabelecimento">
+                                <select name="estabelecimento" required class="form-control r50" id="_estabelecimento">
                                     <option value="" disabled selected hidden>Selecione Estabelecimento</option>
                                 </select>
                                 <span class="iconspan"><i class="fa fa-database"></i></span>
                             </div>
                             <div class="form-group col-6 mx-auto">
-                                <button id="btnLogin" type="button" class="btn form-control btn-primary submit px-3 r50">Login</button>
+                                <button id="btnLogin" type="submit" class="btn form-control btn-primary submit px-3 r50">Login</button>
                             </div>
                         </form>
                         <div class="w-100 text-center mt-4 text">
