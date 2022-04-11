@@ -13,47 +13,61 @@ function login(retorno){
 	}
 }
 
-function setOptions(){
+function setOptions(data){
+    
+    var empresa = data.Vinculo.listaEmpresa;
+    jQuery(`#_empresa`).find('option:not(:first)').remove();
+    var option =  document.createElement('option');
+        option.setAttribute('value', "");
+        option.setAttribute('disabled', "");
+        option.setAttribute('selected', "");
+        option.setAttribute('hidden', "");
+        option.appendChild(document.createTextNode("Selecione Empresa"));
 
-    var dados = {
-        usuario: $("#_login").val(),
-        senha: $("#_senha").val()
+    for (let i = 0; i < empresa.length; i++) {
+        let dados = empresa[i];
+
+        var option =  document.createElement('option');
+            option.setAttribute('value', dados.cod_empresa);
+            option.appendChild(document.createTextNode(dados.nom_empresa));
+
+        document.getElementById(`_empresa`).append(option);
     }
 
-    webservice('POST', 'Login', 'getOptionLogin', dados, function(retorno){
-        var empresa = retorno.Vinculo.listaEmpresa;
-        jQuery(`#_empresa`).find('option:not(:first)').remove();
-        var option =  document.createElement('option');
-            option.setAttribute('value', "");
-            option.setAttribute('disabled', "");
-            option.setAttribute('selected', "");
-            option.setAttribute('hidden', "");
-            option.appendChild(document.createTextNode("Selecione Empresa"));
+    $("#_empresa").change(function(){
+        jQuery(`#_estabelecimento`).find('option:not(:first)').remove();
+        var estab = data.Vinculo.listaEmpresa.filter(x => x.cod_empresa == this.value);
 
-        for (let i = 0; i < empresa.length; i++) {
-            let dados = empresa[i];
+        estab = estab[0].listaEstabelecimento;
+        for (let i = 0; i < estab.length; i++) {
+            let dados = estab[i];
 
             var option =  document.createElement('option');
-                option.setAttribute('value', dados.cod_empresa);
-                option.appendChild(document.createTextNode(dados.nom_empresa));
+                option.setAttribute('value', dados.cod_estabelecimento);
+                option.appendChild(document.createTextNode(dados.nom_estabelecimento));
 
-            document.getElementById(`_empresa`).append(option);
+            document.getElementById(`_estabelecimento`).append(option);
         }
+    })
+}
 
-        $("#_empresa").change(function(){
-            jQuery(`#_estabelecimento`).find('option:not(:first)').remove();
-            var estab = retorno.Vinculo.listaEmpresa.filter(x => x.cod_empresa == this.value);
+$(document).ready(function () {
+    $("#_senha").blur(function(){
+        
+        var senhaForm = $(this).val();
+        var loginForm = $("#_login").val();
 
-            estab = estab[0].listaEstabelecimento;
-            for (let i = 0; i < estab.length; i++) {
-                let dados = estab[i];
-    
-                var option =  document.createElement('option');
-                    option.setAttribute('value', dados.cod_estabelecimento);
-                    option.appendChild(document.createTextNode(dados.nom_estabelecimento));
-    
-                document.getElementById(`_estabelecimento`).append(option);
-            }
+        fetch("/login/list/selects",{
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({"login":loginForm,"senha":senhaForm})
+        }).then(response =>{
+            return response.json();
+        }).then(data =>{
+            setOptions(data);
         })
     });
-}
+});

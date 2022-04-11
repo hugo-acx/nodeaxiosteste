@@ -15,6 +15,8 @@ router.get( '/login', ( req, res ) => {
     } );
 } );
 
+router.post( '/login/list/selects', userController.GetEmpEstab)
+
 router.post( '/login', userController.Login );
 router.get( '/logout', userController.Logout );
 
