@@ -46,44 +46,13 @@ app.use( bodyParser.urlencoded( {
 
 // Grupo de Rotas iniciais do Express
 app.use( express.static( path.join( __dirname, 'public' ) ) )
+
 app.use( '/', require( './routes/index.route.js' ) )
 app.use( '/user', require( './routes/user.route.js' ) )
 
-
-
-
-
 // Set a port for the app to listen on
-const PORT = process.env.PORT || 5006;
+const PORT = process.env.PORT || 5500;
 
 app.listen( PORT, function () {
     console.log( `Rodando na porta: ${PORT}. Press CTRL+C para sair.` )
 } );
-
-// ANTIGO INDEX
-// const axios = require("axios");
-// const url = "http://localhost:50001/";
-
-// async function webservice(metodo, controller, funcao, dados = null){
-//     await axios({
-//             method: metodo,
-//             url: `/${controller}/${funcao}`,
-//             baseURL: url,
-//             //data: (dados == null) ? {} : dados,
-//             params: (dados == null) ? {} : dados,
-//             responseType: 'json'
-//         }).then(function (retorno) {
-//             // manipula o sucesso da requisição
-//             console.log(retorno.data);
-//         })
-//         .catch(function (error) {
-//             // manipula erros da requisição
-//             console.error(error);
-//         })
-//             .then(function () {
-//             // sempre será executado
-//         });
-// }
-
-// //webservice('get', 'Parametros', 'GetAllParametros', null);
-// webservice('get', 'Parametros', 'GetParametro', {nom_parametro: 'forma_pagamento'});

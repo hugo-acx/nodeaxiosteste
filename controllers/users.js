@@ -2,6 +2,7 @@ const {
     default: axios
 } = require( 'axios' );
 const usersModel = require( '../model/users' );
+const emp_estabModel = require( '../model/emp_estab' );
 
 /**
  * Requisição Express
@@ -38,4 +39,12 @@ exports.Lista = async ( req, res ) => {
         data: await usersModel.Lista()
     }
     res.render( 'teste/list', dados );
+}
+
+exports.GetEmpEstab = async ( req, res) => {
+    console.log(req.body)
+    const dados = await emp_estabModel.GetEmpEstab(req.body.login, req.body.senha);
+    console.log(dados);
+    res.send(dados); 
+    //console.log(dados);
 }

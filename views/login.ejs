@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="/libs/bootstrap5/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet" href="/css/loading.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login</title>
 </head>
 <body>
@@ -18,12 +17,12 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap my-5 p-5 card-login">
-                        <div class="d-flex justify-content-between">
-                            <img src="images/logo-acx.png" alt="Logo acx" class="logo-acx" width="150px">
+                        <div class="d-flex justify-content-end">
+                            <!-- <img src="images/logo-acx.png" alt="Logo acx" class="logo-acx" width="150px"> -->
                             <i class="fa fa-bars p-color"></i>
                         </div>
                         <div class="text-center mb-3 div-icon-user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="100px" class="rounded mb-2" alt="User icon">
+                            <img src="images/logo-acx.png" width="150px" alt="Logo acx">
                             <p class="p-color"><b>Acesso ao sistema</b></p>
                         </div>
                         <form action="/login" method="post" class="login-form">
@@ -39,13 +38,13 @@
                                 <select name="empresa"  class="form-control r50" id="_empresa">
                                     <option value="" disabled selected hidden>Selecione Empresa</option>
                                 </select>
-                                <span class="iconspan"><i class="fa fa-database"></i></span>
+                                <span class="iconspan"><i class="fa fa-briefcase"></i></span>
                             </div>
                             <div class="mb-3">
                                 <select name="estabelecimento"  class="form-control r50" id="_estabelecimento">
                                     <option value="" disabled selected hidden>Selecione Estabelecimento</option>
                                 </select>
-                                <span class="iconspan"><i class="fa fa-database"></i></span>
+                                <span class="iconspan"><i class="fa fa-building-o"></i></span>
                             </div>
                             <div class="form-group col-6 mx-auto">
                                 <button id="btnLogin" type="submit" class="btn form-control btn-primary submit px-3 r50">Login</button>
@@ -65,5 +64,9 @@
     </section>   
     <script src="/libs/jquery.js"></script>
     <script src="/libs/bootstrap5/dist/js/bootstrap.js"></script>
+    <!-- <script src="/js/geral.js"></script> -->
+    <!-- <script src="/js/localStorage.js"></script> -->
+    <!-- <script src="/js/Login/mainLogin.js"></script> -->
+    <script src="/js/Login/login.js"></script>
 </body>
 </html>
