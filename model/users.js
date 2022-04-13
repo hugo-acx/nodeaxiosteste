@@ -4,7 +4,7 @@ const webservice = require( '../middlewares/webservice' );
 exports.Auth = async ( login, pass, empresa, estabelecimento ) => {
     return await axios({
             method: 'POST',
-            url: '/Login/getAuthorizeUser',
+            url: 'Login/getAuthorizeUser',
             params: {login: login,
                      senha: pass,
                      empresa: empresa,
