@@ -309,7 +309,7 @@ function NotificarAlerta(texto, tipoMsg){
     }
 }
 
-function confirmInativar(dados, callback, titulo = "Ativar / Inativar", msg = "Deseja continuar com a solicitação ?", evt = null) {
+function confirm(dados, callback, titulo = "Ativar / Inativar", msg = "Deseja continuar com a solicitação ?", evt = null) {
     jQuery.confirm({
         title: titulo,
         content: msg,
@@ -377,7 +377,9 @@ function add_script() {
     var arr = [];
     arr.push(
         `${str}js/localStorage.js`,
-        // str + "js/mainTabs.js",
+        `${str}libs/pnotify/node_modules/@pnotify/core/dist/PNotify.js`,
+        `${str}libs/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js`,
+        `${str}libs/jquery-ui-1.13.1/jquery-ui.min.js`,
         `${str}js/Tabs/nth-tabs.js`,
         `${str}libs/DataTables/datatables.js`,
         `${str}libs/webdatarocks-1.4.4/webdatarocks.toolbar.min.js`,
@@ -429,6 +431,8 @@ function add_link() {
             `${str}libs/monaco_editor/editor.main.min.css`,
             `${str}libs/pnotify/core/dist/PNotify.css`,
             `${str}libs/pnotify/core/dist/BrightTheme.css`,
+            `${str}libs/jquery-confirm-v3.3.4/css/jquery-confirm.css`,
+            `${str}css/loading.css`
         );
     for (let j = 0; j < arr.length; j++) {
         var link = arr[j];

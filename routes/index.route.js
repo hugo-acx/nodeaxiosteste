@@ -25,7 +25,11 @@ router.post( '/consultas/delete', consultasController.DeleteConsulta );
 //Rota que retorna empresa e estabelecimento após o usuário digitar login e senha
 router.post( '/login/list/selects', userController.GetEmpEstab)
 
+// Rota para encerrar sessoes ativa aprtir da tela de login
+router.post( '/solicEncerraSessoes', userController.Solic );
+
 router.post( '/login', userController.Login );
+
 router.get( '/logout', userController.Logout );
 
 module.exports = router;
