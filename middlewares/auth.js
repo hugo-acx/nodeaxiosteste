@@ -1,11 +1,11 @@
 exports.isAuthorized = async ( req, res, next ) => {
 
-    if ( !req.session.user ) {
-        return res.redirect( '/login' )
-        next();
+    // if ( !req.session.user ) {
+    //     return res.redirect( '/login' )
+    //     next();
 
-    } else {
+    // } else {
         res.locals.user = req.session.user;
         next();
-    }
+    // }
 }

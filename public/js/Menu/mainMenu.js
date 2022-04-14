@@ -18,15 +18,21 @@ $(document).ready(function(){
               fadeIn: true,
           })
 
-          // $(`#nth-tab-${id} .nth-tabs-content`).load( "../pages/estrutura_tab.html");
+          // setOptionQuery(id);
 
-          $(`#btnConsultar_${id}`).on("click", function () {
-            initGrid(id);
-          });
+          // $(`#nth-tab-${id} .nth-tabs-content`).load( "../pages/estrutura_tab.html");
 
           $(`#query_selector_${id}`).select2();
           $(`#query_selector_${id}`).on("change", function () {
             console.log(this.value); 
+          });
+
+          $(`#btnEditaConsulta_${id}`).on("click", function () {
+            initTableConsultas(id);
+          });
+
+          $(`#btnConsultar_${id}`).on("click", function () {
+            initGrid(id);
           });
         }
   });

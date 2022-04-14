@@ -99,24 +99,24 @@ function CustomUnloading() {
     jQuery('.CustomLoading').remove();
 }
 
-function ValidAuth(doc){
-	var params = getUrlParametro();
+// function ValidAuth(doc){
+// 	var params = getUrlParametro();
 	
-    var d = getLocalStorage('userUID');
-	if (d.Session == undefined){
-        if(jQuery("#page").val() != "login"){            
-            doc.css("display", "none");
-            IrPara("/frontend/index.html");
-        }
-	} else {
-        if(jQuery("#page").val() == "login"){            
-            IrPara("/frontend/pages/index.html");
-        }
-        else{
-            doc.css("display", "block");
-        }
-	}
-}
+//     var d = getLocalStorage('userUID');
+// 	if (d.Session == undefined){
+//         if(jQuery("#page").val() != "login"){            
+//             doc.css("display", "none");
+//             IrPara("/frontend/index.html");
+//         }
+// 	} else {
+//         if(jQuery("#page").val() == "login"){            
+//             IrPara("/frontend/pages/index.html");
+//         }
+//         else{
+//             doc.css("display", "block");
+//         }
+// 	}
+// }
 
 //Captura dados da URL
 function getUrlParametro() {
@@ -280,6 +280,7 @@ function Notificar(msg = "") {
 }
 
 function NotificarAlerta(texto, tipoMsg){
+    debugger;
     var _tipoMsg = tipoMsg || 'info';
 
     switch(_tipoMsg){
@@ -362,7 +363,7 @@ function add_script() {
     var str;
     switch(jQuery("#page").val()){
         case "menu":
-            str = '../';
+            str = '/';
         break;
 
         case 'login':
@@ -379,18 +380,19 @@ function add_script() {
         `${str}js/localStorage.js`,
         // str + "js/mainTabs.js",
         `${str}js/Tabs/nth-tabs.js`,
-        `${str}bibliotecas/DataTables/datatables.js`,
-        `${str}bibliotecas/webdatarocks-1.4.4/webdatarocks.toolbar.min.js`,
-        `${str}bibliotecas/webdatarocks-1.4.4/webdatarocks.js`,
-        `${str}bibliotecas/webdatarocks-1.4.4/webdatarocks.googlecharts.js`,
+        `${str}libs/DataTables/datatables.js`,
+        `${str}libs/webdatarocks-1.4.4/webdatarocks.toolbar.min.js`,
+        `${str}libs/webdatarocks-1.4.4/webdatarocks.js`,
+        `${str}libs/webdatarocks-1.4.4/webdatarocks.googlecharts.js`,
         `https://www.gstatic.com/charts/loader.js`,
-        `${str}bibliotecas/pnotify/node_modules/@pnotify/core/dist/PNotify.js`,
+        `${str}libs/pnotify/core/dist/PNotify.js`,
         `${str}js/modifica_query.js`,
-        `${str}bibliotecas/select2/dist/js/select2.min.js`,
+        `${str}libs/select2/dist/js/select2.min.js`,
         `${str}js/Componentes/init_data_rocks.js`,
         `${str}js/Componentes/init_grid.js`,
-        `${str}bibliotecas/monaco_editor/loader.js`,
-        `${str}js/criaTabs.js`
+        `${str}libs/monaco_editor/loader.js`,
+        `${str}js/criaTabs.js`,
+        `${str}js/Componentes/init_table_consultas.js`
         ); 
 
     for (let i = 0; i < arr.length; i++) {
@@ -407,7 +409,7 @@ function add_link() {
     var str = '';
     switch(jQuery("#page").val()){
         case "menu": 
-            str = '../';
+            str = '/';
         break;
         case 'login':
             str = '';
@@ -423,10 +425,12 @@ function add_link() {
             "https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.css",
             `${str}css/tabs/nth-tabs.css`,
             `${str}css/tabs/nth-icons.css`,
-            `${str}bibliotecas/DataTables/datatables.min.css`,
-            `${str}bibliotecas/webdatarocks-1.4.4/theme/stripedblue/webdatarocks.min.css`,
-            `${str}bibliotecas/select2/dist/css/select2.css`,
-            `${str}bibliotecas/monaco_editor/editor.main.min.css`
+            `${str}libs/DataTables/datatables.min.css`,
+            `${str}libs/webdatarocks-1.4.4/theme/stripedblue/webdatarocks.min.css`,
+            `${str}libs/select2/dist/css/select2.css`,
+            `${str}libs/monaco_editor/editor.main.min.css`,
+            `${str}libs/pnotify/core/dist/PNotify.css`,
+            `${str}libs/pnotify/core/dist/BrightTheme.css`,
         );
     for (let j = 0; j < arr.length; j++) {
         var link = arr[j];
@@ -475,7 +479,7 @@ function initFunction(evt) {
     add_link();
     add_script();
 
-    ValidAuth($("body"));
+    // ValidAuth($("body"));
     
     // var menu = getLocalStorage('menuUID');
     // montaMenu(menu);

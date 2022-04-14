@@ -1,13 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=title%></title>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+
+  <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/libs/bootstrap5/dist/css/bootstrap.css">
+
+  <!-- <link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'> -->
+  <link rel="stylesheet" href="/css/css-pro-layout.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css'>
+
+  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/libs/DataTables/Buttons-2.2.2/css/buttons.dataTables.min.css">
 </head>
-<body>
-    <h1> Usuário Logado</h1>
-    <h2><%=locals.user.name%></h2>
+
+<body> 
+<input type="hidden" id="page" value="menu">
+<div class="layout has-sidebar fixed-sidebar fixed-header">
+  <aside id="sidebar" class="sidebar break-point-lg">
+    <div class="sidebar-layout">
+      <div class="sidebar-header">
+        <img id="logo_grupoacx" class="text-center" src="/images/acx-white.png">
+      </div>
+      <div class="sidebar-content">
+        <nav class="menu open-current-submenu" id="menuNav">
+          <ul>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-vip-diamond-fill"></i>
+                </span>
+                <span class="menu-title">Menu 1</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li id="menu_2" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 2</span>
+                    </a>
+                  </li>
+                  <li id="menu_3" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 3</span>
+                    </a>
+                  </li>
+                  <li class="menu-item sub-menu">
+                    <a href="#">
+                      <span class="menu-title">Menu 4</span>
+                    </a>
+                    <div class="sub-menu-list">
+                      <ul>
+                        <li id="menu_5" class="menu-item openTab">
+                          <a href="#">
+                            <span class="menu-title">Menu 5</span>
+                          </a>
+                        </li>
+                        <li id="menu_6" class="menu-item openTab">
+                          <a href="#">
+                            <span class="menu-title">Menu 6</span>
+                          </a>
+                        </li>
+                        <li class="menu-item sub-menu">
+                          <a href="#">
+                            <span class="menu-title">Menu 7</span>
+                          </a>
+                          <div class="sub-menu-list">
+                            <ul>
+                              <li id="menu_8" class="menu-item openTab">
+                                <a href="#">
+                                  <span class="menu-title">Menu 8</span>
+                                </a>
+                              </li>
+                              <li id="menu_9" class="menu-item openTab">
+                                <a href="#">
+                                  <span class="menu-title">Menu 9</span>
+                                </a>
+                              </li>
+                              <li class="menu-item sub-menu">
+                                <a href="#">
+                                  <span class="menu-title">Menu 10</span>
+                                </a>
+                                <div class="sub-menu-list">
+                                  <ul>
+                                    <li id="menu_11" class="menu-item openTab">
+                                      <a href="#">
+                                        <span class="menu-title">Menu 11 </span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-bar-chart-2-fill"></i>
+                </span>
+                <span class="menu-title">Menu 12</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li id="menu_13" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 13</span>
+                    </a>
+                  </li>
+                  <li id="menu_14" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 14</span>
+                    </a>
+                  </li>
+                  <li id="menu_15" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 15</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-shopping-cart-fill"></i>
+                </span>
+                <span class="menu-title">Menu 16</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li id="menu_17" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 17</span>
+                    </a>
+                  </li>
+                  <li id="menu_18" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 18</span>
+                    </a>
+                  </li>
+                  <li id="menu_19" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 19</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-global-fill"></i>
+                </span>
+                <span class="menu-title">Menu 20</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li id="menu_21" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 21</span>
+                    </a>
+                  </li>
+                  <li id="menu_22" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 22</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-brush-3-fill"></i>
+                </span>
+                <span class="menu-title">Menu 23</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li id="menu_24" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 24</span>
+                    </a>
+                  </li>
+                  <li id="menu_25" class="menu-item openTab">
+                    <a href="#">
+                      <span class="menu-title">Menu 25</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="menu_26" class="menu-item openTab">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-book-2-fill"></i>
+                </span>
+                <span class="menu-title">Menu 26</span>
+              </a>
+            </li>
+            <li id="menu_27" class="menu-item openTab">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-calendar-fill"></i>
+                </span>
+                <span class="menu-title">Menu 27</span>
+              </a>
+            </li>
+            <li id="tabela" class="menu-item openTab">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-table-fill"></i>
+                </span>
+                <span class="menu-title">Tabela de dados</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+      </div>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+  <div class="layout">
+    <header class="header" style="background-color: white;">
+      <a id="btn-collapse" href="#">
+        <i class="ri-menu-line ri-xl"></i>
+      </a>
+      <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
+        <i class="ri-menu-line ri-xl"></i>
+      </a>
+      <div style="margin-left: auto;">  
+        <button class="btn btn-sm btn-primary" type="button" id="btnDiminuir">A-</button>
+        <button class="btn btn-sm btn-primary" type="button" id="btnReset">A</button>
+        <button class="btn btn-sm btn-primary" type="button" id="btnAumentar">A+</button>
+      </div>
+    </header>
+
+    <main class="content" id="mainContent">
+      
+      <div class="nth-tabs" id="example"></div>
+      <!-- <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      </div> -->
+    </main>
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<div id="consultasModal" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="consultasModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Consultas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="divConsultasTable">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editorModal" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="editorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editor SQL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="queryName">Digite o apelido da consulta:</label>
+        <input id="queryName" type="text">
+        <div id="editorQuery" style="height:400px;border:1px solid black;margin-top: 10px;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="salvaQuery" type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="/libs/jquery.js"></script>         
+    <script src="/libs/DataTables/Buttons-2.2.2/js/buttons.dataTables.min.js"></script>
+    <script src='https://unpkg.com/@popperjs/core@2'></script>
+    <script src="/libs/bootstrap5/dist/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
+
+    <!-- partial -->
+    <script src="/js/geral.js"></script>
+    <script  src="/js/Menu/script.js"></script>
+    <script  src="/js/Menu/mainMenu.js"></script>
 </body>
 </html>

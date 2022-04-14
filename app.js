@@ -9,9 +9,7 @@ const session = require( 'express-session' );
 // Configura parametros padrões do AXIOS
 axios.defaults.baseURL = process.env.API_URL;
 axios.defaults.headers = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    "Access-Control-Allow-Origin": "*",
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'application/json'
 };
 //axios.defaults.withCredentials = true
 
