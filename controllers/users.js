@@ -23,7 +23,7 @@ exports.Login = async ( req, res ) => {
         };
         res.redirect( "/" );
     } else {
-        res.send( dados );
+        res.send( dados.data );
     }
 };
 
