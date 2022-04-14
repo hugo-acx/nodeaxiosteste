@@ -16,11 +16,11 @@ exports.Login = async ( req, res ) => {
     if ( dados.status ) {
         axios.defaults.headers.Authorization = 'Bearer ' + dados.chave;
 
-        // req.session.user = dados.data;
-        // const context = {
-        //     title: "Login",
-        //     data: dados.data,
-        // };
+        req.session.user = dados.data;
+        const context = {
+            title: "Login",
+            data: dados.data,
+        };
         console.log(dados);
         res.redirect( "/" );
     } else {
