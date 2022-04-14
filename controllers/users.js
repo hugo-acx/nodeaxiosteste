@@ -57,7 +57,7 @@ exports.Lista = async ( req, res ) => {
 exports.GetEmpEstab = async ( req, res) => {
     console.log(req.body)
     const dados = await emp_estabModel.GetEmpEstab(req.body.login, req.body.senha);
-    console.log(dados);
+    //console.log(dados);
     res.send(dados); 
     //console.log(dados);
 }
