@@ -13,18 +13,32 @@ const emp_estabModel = require( '../model/emp_estab' );
  */
 exports.Login = async ( req, res ) => {
     const dados = await usersModel.Auth( req.body.usuario, req.body.senha, req.body.empresa, req.body.estabelecimento );
-    console.log(dados);
-    if ( dados.data.status ) {
-        axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
-        req.session.user = dados.data;
-        const context = {
-            title: "Login",
-            data: dados.data,
-        };
+    if ( dados.status ) {
+        axios.defaults.headers.Authorization = 'Bearer ' + dados.chave;
+
+        // req.session.user = dados.data;
+        // const context = {
+        //     title: "Login",
+        //     data: dados.data,
+        // };
+        console.log(dados);
         res.redirect( "/" );
     } else {
-        res.send( dados );
+        console.log(dados);
+        res.redirect( '/login' );
     }
+    // if ( dados.data.token.length > 0 ) {
+    //     axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
+
+    //     req.session.user = dados.data;
+    //     const context = {
+    //         title: "Login",
+    //         data: dados.data,
+    //     };
+    //     res.redirect( "/" );
+    // } else {
+    //     res.redirect( '/login' );
+    // }
 };
 
 exports.Logout = ( req, res ) => {
