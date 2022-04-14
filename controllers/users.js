@@ -14,7 +14,7 @@ const emp_estabModel = require( '../model/emp_estab' );
 exports.Login = async ( req, res ) => {
     const dados = await usersModel.Auth( req.body.usuario, req.body.senha, req.body.empresa, req.body.estabelecimento );
     console.log(dados);
-    if ( dados.data.token.length > 0 ) {
+    if ( dados.data.status ) {
         axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
         req.session.user = dados.data;
         const context = {
@@ -23,8 +23,7 @@ exports.Login = async ( req, res ) => {
         };
         res.redirect( "/" );
     } else {
-        alert('login invalido..');
-        res.redirect( '/login' );
+        res.send( dados );
     }
 };
 
