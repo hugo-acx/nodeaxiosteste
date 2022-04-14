@@ -5,7 +5,7 @@ exports.Auth = async ( login, pass, empresa, estabelecimento ) => {
     return await axios({
             method: 'POST',
             url: 'Login/getAuthorizeUser',
-            params: {login: login,
+            data: {login: login,
                      senha: pass,
                      empresa: empresa,
                      estabelecimento: estabelecimento},

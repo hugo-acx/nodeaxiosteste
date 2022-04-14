@@ -15,7 +15,7 @@ function login(retorno){
 
 function setOptions(data){
     
-    var empresa = data.Vinculo.listaEmpresa;
+    var empresa = data.vinculo.listaEmpresa;
     jQuery(`#_empresa`).find('option:not(:first)').remove();
     var option =  document.createElement('option');
         option.setAttribute('value', "");
@@ -36,7 +36,7 @@ function setOptions(data){
 
     $("#_empresa").change(function(){
         jQuery(`#_estabelecimento`).find('option:not(:first)').remove();
-        var estab = data.Vinculo.listaEmpresa.filter(x => x.cod_empresa == this.value);
+        var estab = data.vinculo.listaEmpresa.filter(x => x.cod_empresa == this.value);
 
         estab = estab[0].listaEstabelecimento;
         for (let i = 0; i < estab.length; i++) {
