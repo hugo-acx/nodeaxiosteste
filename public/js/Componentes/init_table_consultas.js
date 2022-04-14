@@ -97,6 +97,32 @@ function initTableConsultas(idTab) {
     })
 }
 
+function carregaTableConsultas(retorno, idTab) {
+    if (retorno.status) {
+        var array = retorno.listaConsulta;
+        let table = jQuery(`#consultasTable_${idTab}`).DataTable({
+            "columns": [
+                { "data": "apelido_consulta" },
+                { "data": "consulta" },
+                {
+                    "className": "add-query",
+                    "defaultContent": `<button onclick="modificaQuery(this, ${idTab})" class="btn btn-primary btn-sm" type="button">Modificar consulta</button>
+                                       <button onclick="deleteQuery(this, ${idTab})" class="btn btn-danger btn-sm" type="button">Excluir consulta</button>`,
+                    "data": null,
+                    "orderable": false
+                },
+            ],
+            "data": array,
+            "keys": false,
+            "responsive": true,
+            "lengthMenu": [[5, 7, 10, 30, 50, 100], [5, 7, 10, 30, 50, 100]],
+        });
+        $("#consultasModal").modal("show");
+    }else{
+        NotificarAlerta(retorno.erro, 'notice');
+    }
+}
+
 function modificaQuery(btn, idTab) {
     let data = jQuery(`#consultasTable_${idTab.id}`).DataTable().row( btn.parentNode.parentNode ).data();
     $("#editorModal").modal("show"); 
@@ -141,28 +167,28 @@ function modificaQuery(btn, idTab) {
     });
 }
 
-function carregaTableConsultas(retorno, idTab) {
-    if (retorno.status) {
-        var array = retorno.listaConsulta;
-        let table = jQuery(`#consultasTable_${idTab}`).DataTable({
-            "columns": [
-                { "data": "apelido_consulta" },
-                { "data": "consulta" },
-                {
-                    "className": "add-query",
-                    "defaultContent": `<button onclick="modificaQuery(this, ${idTab})" class="btn btn-primary btn-sm" type="button">Modificar consulta</button>
-                                       <button class="btn btn-danger btn-sm btn-exclui-query" type="button">Excluir consulta</button>`,
-                    "data": null,
-                    "orderable": false
-                },
-            ],
-            "data": array,
-            "keys": false,
-            "responsive": true,
-            "lengthMenu": [[5, 7, 10, 30, 50, 100], [5, 7, 10, 30, 50, 100]],
-        });
-        $("#consultasModal").modal("show");
-    }else{
-        NotificarAlerta(retorno.erro, 'notice');
+function deleteQuery(btn, idTab) {
+    let data = jQuery(`#consultasTable_${idTab.id}`).DataTable().row( btn.parentNode.parentNode ).data();
+    
+    var dados = {
+        cod: data.cod_consulta,
+        apelido: data.apelido_consulta,
+        query: data.consulta
     }
+
+    fetch("/consultas/delete",{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+    }).then(response =>{
+        return response.json();
+    }).then(data =>{
+        $("#consultasModal").modal("hide");
+        NotificarAlerta(data.msg, 'success');
+    }).catch(error =>{
+        NotificarAlerta(error, 'notice');
+    })
 }

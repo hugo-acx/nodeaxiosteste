@@ -70,33 +70,45 @@ function criaTab(idTab) {
     return content;
 }
 
-function setOptionQuery(idTab){
+async function setOptionQuery(idTab){
     $(`#query_selector_${idTab}`).empty();
     // $(`#query_selector_${idTab}`).val(null).trigger('change');
-    webservice("GET", "ConsultaCustomizada", "consulta", "", function(retorno){
-        if (retorno.status == true) {
+    const retorno = await fetch("/consultas/list",{
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+    }).then(response =>{
+        // console.log('aqui');
+        // console.log(response);
+        return response.json();
+    }).then(data =>{
+        console.log(data);
+        return data;
+    })
+    if (retorno.status == true) {
 
-            array = retorno.listaConsulta;
-            jQuery(`#query_selector_${idTab}`).find('option:not(:first)').remove();
+        array = retorno.listaConsulta;
+        jQuery(`#query_selector_${idTab}`).find('option:not(:first)').remove();
 
-            for (let i = 0; i < array.length; i++) 
-            {
-                var dados = array[i];
+        for (let i = 0; i < array.length; i++) 
+        {
+            var dados = array[i];
 
-                var option =  document.createElement('option');
-                    option.setAttribute('value', dados.cod_consulta);
-                    option.appendChild(document.createTextNode(dados.apelido_consulta));
+            var option =  document.createElement('option');
+                option.setAttribute('value', dados.cod_consulta);
+                option.appendChild(document.createTextNode(dados.apelido_consulta));
 
-                document.getElementById(`query_selector_${idTab}`).append(option);
-            }
-
-            // $(`#query_selector_${id}`).select2();
-            // $(`#query_selector_${id}`).on("change", function () {
-            //   console.log(this.value); 
-            // });
-
-        } else {
-            NotificarAlerta(retorno.erro, 'notice');
+            document.getElementById(`query_selector_${idTab}`).append(option);
         }
-    });
+
+        // $(`#query_selector_${id}`).select2();
+        // $(`#query_selector_${id}`).on("change", function () {
+        //   console.log(this.value); 
+        // });
+
+    } else {
+        NotificarAlerta(retorno.erro, 'notice');
+    }
 }

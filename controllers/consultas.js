@@ -31,3 +31,9 @@ exports.UpdateConsulta = async ( req, res) => {
     res.send(dados);
     // return dados;
 }
+
+exports.DeleteConsulta = async ( req, res) => {
+    const dados = await consultas.DeleteConsulta(req.body.cod, req.body.apelido, req.body.query);
+    res.send(dados);
+    // return dados;
+}

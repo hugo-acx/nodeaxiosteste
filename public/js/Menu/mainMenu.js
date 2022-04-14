@@ -18,7 +18,7 @@ $(document).ready(function(){
               fadeIn: true,
           })
 
-          // setOptionQuery(id);
+          setOptionQuery(id);
 
           // $(`#nth-tab-${id} .nth-tabs-content`).load( "../pages/estrutura_tab.html");
 

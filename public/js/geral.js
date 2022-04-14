@@ -280,7 +280,6 @@ function Notificar(msg = "") {
 }
 
 function NotificarAlerta(texto, tipoMsg){
-    debugger;
     var _tipoMsg = tipoMsg || 'info';
 
     switch(_tipoMsg){
@@ -386,7 +385,6 @@ function add_script() {
         `${str}libs/webdatarocks-1.4.4/webdatarocks.googlecharts.js`,
         `https://www.gstatic.com/charts/loader.js`,
         `${str}libs/pnotify/core/dist/PNotify.js`,
-        `${str}js/modifica_query.js`,
         `${str}libs/select2/dist/js/select2.min.js`,
         `${str}js/Componentes/init_data_rocks.js`,
         `${str}js/Componentes/init_grid.js`,
@@ -647,7 +645,6 @@ function DelRow(datatable_id,objeto)
 
 function AddRow(datatable_id, disableInput = '')
 {	
-    debugger
 	var datatable = jQuery('#'+datatable_id).DataTable();
     let line = datatable.rows().count();
 

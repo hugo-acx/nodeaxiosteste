@@ -20,6 +20,7 @@ router.get( '/login', ( req, res ) => {
 router.post( '/consultas/insert', consultasController.InsertConsulta );
 router.get( '/consultas/list', consultasController.GetAllConsultas );
 router.put( '/consultas/update', consultasController.UpdateConsulta );
+router.post( '/consultas/delete', consultasController.DeleteConsulta );
 
 //Rota que retorna empresa e estabelecimento após o usuário digitar login e senha
 router.post( '/login/list/selects', userController.GetEmpEstab)
