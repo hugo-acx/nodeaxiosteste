@@ -1,10 +1,11 @@
 const axios = require( 'axios' ).default;
+const webservice = require( '../middlewares/webservice' );
 
 exports.Auth = async ( login, pass, empresa, estabelecimento ) => {
         await axios({
             method: 'POST',
-            url: '/Login/getAuthorizeUser',
-            params: {login: login,
+            url: 'Login/getAuthorizeUser',
+            data: {login: login,
                      senha: pass,
                      empresa: empresa,
                      estabelecimento: estabelecimento},

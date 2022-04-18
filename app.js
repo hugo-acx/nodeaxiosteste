@@ -7,6 +7,16 @@ const axios = require( "axios" ).default;
 const session = require( 'express-session' );
 
 // Configura parametros padrões do AXIOS
+// axios.interceptors.request.use(function (config) {
+//     // Faz alguma coisa antes da requisição ser enviada
+//     // return config;
+//     console.log("machado 1")
+//   }, function (error) {
+//     // Faz alguma coisa com o erro da requisição
+//     // return Promise.reject(error);
+//     console.log("machado 2");
+// });
+
 axios.defaults.baseURL = process.env.API_URL;
 axios.defaults.headers = {
     'Content-Type': 'application/json'
