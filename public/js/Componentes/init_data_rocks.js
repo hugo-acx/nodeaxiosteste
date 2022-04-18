@@ -1,6 +1,6 @@
 function initDataRocks(idTab) {
     // setTimeout(() => {
-        
+        debugger;
         var pivot = new WebDataRocks({
             container: `#wdr-component_${idTab}`,
             toolbar: true,

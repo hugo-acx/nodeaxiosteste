@@ -385,7 +385,7 @@ function add_script() {
         `${str}libs/webdatarocks-1.4.4/webdatarocks.googlecharts.js`,
         `https://www.gstatic.com/charts/loader.js`,
         `${str}libs/pnotify/core/dist/PNotify.js`,
-        `${str}libs/select2/dist/js/select2.min.js`,
+        `${str}libs/select2/dist/js/select2.js`,
         `${str}js/Componentes/init_data_rocks.js`,
         `${str}js/Componentes/init_grid.js`,
         `${str}libs/monaco_editor/loader.js`,

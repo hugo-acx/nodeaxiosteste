@@ -86,6 +86,7 @@
 
             addTab: function (options) {
                 // nav-tab
+                
                 var tab = [];
                 var active = options.active == undefined ? settings.active : options.active;
                 var allowClose = options.allowClose == undefined ? settings.allowClose : options.allowClose;
@@ -93,10 +94,10 @@
                 var fadeIn = options.fadeIn == undefined ? settings.fadeIn : options.fadeIn;
                 var url = options.url == undefined ? "" : options.url;
                 tab.push('<li title="' + options.title + '" '+(allowClose ? '' : 'not-allow-close')+'>');
-                tab.push('<a href="#' + options.id + '" data-toggle="tab">');
+                tab.push('<a href="#" data-toggle="tab">');
                 tab.push('<span>' + options.title + '</span>');
                 tab.push('</a>');
-                allowClose ? tab.push('<i class="icon nth-icon-close-mini tab-close"></i>') : '';
+                allowClose ? tab.push('<i id="#'+ options.id +'" class="icon nth-icon-close-mini tab-close"></i>') : '';
                 tab.push('</li>');
                 nthTabs.find(".nav-tabs").append(tab.join(''));
                 //tab-content
@@ -179,11 +180,13 @@
             },
 
             setActTab: function (tabId) {
+                
                 tabId = tabId == undefined ? methods.getActiveId() : tabId;
                 tabId = tabId.indexOf('#') > -1 ? tabId : '#' + tabId;
                 nthTabs.find('.active').removeClass('active');
-                nthTabs.find("[href='" + tabId + "']").parent().addClass('active');
-                nthTabs.find(tabId).addClass('active');
+                nthTabs.find("[id='" + tabId + "']").parent().addClass('active');
+                let act = nthTabs.find(tabId)
+                act.addClass('active');
                 return this;
             },
 
@@ -327,7 +330,7 @@
 
             onTabToggle: function(){
                 nthTabs.on("click", '.nav-tabs li', function () {
-                    var lastTabText = nthTabs.find(".nav-tabs li a[href='#"+methods.getActiveId()+"'] span").text();
+                    var lastTabText = nthTabs.find(".nav-tabs li i[id='#"+methods.getActiveId()+"'] span").text();
                     // handler["tabToggleHandler"]({
                     //     last:{
                     //         tabId:methods.getActiveId(),
@@ -345,12 +348,12 @@
                             tabText:lastTabText
                         },
                         active:{
-                            tabId:$(this).find("a").attr("href").replace('#',''),
-                            tabText:$(this).find("a span").text()
+                            tabId:$(this).find("i").attr("id").replace('#',''),
+                            tabText:$(this).find("i span").text()
                         }
                     });
 
-                    methods.toggleTab($(this).find("a").attr("href").replace('#',''));
+                    methods.toggleTab($(this).find("i").attr("id").replace('#',''));
                 });
             }
         };

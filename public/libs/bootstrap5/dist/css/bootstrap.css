@@ -4012,6 +4012,13 @@ textarea.form-control-lg {
   display: block;
 }
 
+.tab-content-pills > .tab-pane {
+  display: none;
+}
+.tab-content-pills > .active {
+  display: block;
+}
+
 .navbar {
   position: relative;
   display: flex;

@@ -1,23 +1,8 @@
 var array;
 function criaTab(idTab) {
-    // webservice("GET", "ConsultaCustomizada", "consulta", "", function(retorno){
-    //     if (retorno.status) {
-    //         array = retorno.listaConsulta;
-    //     }else{
-    //         // NotificarAlerta(retorno.erro, 'notice');
-    //         console.log(retorno.erro);
-    //     }
-    // }, true, false);
-
     let content =  `<header class="toolbar" >
     <div class="btn-group">
-        <select id="query_selector_${idTab}" class="btn btn-primary">`
-            if (array != undefined) {
-                for (let i = 0; i < array.length; i++) {
-                    content += `<option value="${array[i].cod_consulta}">${array[i].apelido_consulta}</option>`;
-                }
-            }
-    content += `</select>
+        <select id="query_selector_${idTab}" class="btn btn-primary"></select>
     </div>
     <button id="btnEditaConsulta_${idTab}" class="btn btn-sm btn-primary">Editar consultas</button>
     <button id="btnConsultar_${idTab}" class="btn btn-sm btn-primary">Consultar <i class="fa fa-search"></i></button>
@@ -48,20 +33,20 @@ function criaTab(idTab) {
     <button id="print_btn_${idTab}" class="btn-sm btn-primary">Imprimir <i class="fa fa-print"></i></button>
 
     </header>
-    <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab-${idTab}" role="tablist">
         <li class="nav-item" role="presentation">
-        <button class="nav-link btn-sm active" id="pills-grid-tab" data-bs-toggle="pill" data-bs-target="#pills-grid" type="button" role="tab" aria-controls="pills-grid" aria-selected="true">Grid</button>
+        <button class="nav-link btn-sm active" id="pills-grid-tab-${idTab}" data-bs-toggle="pill" data-bs-target="#pills-grid-${idTab}" type="button" role="tab" aria-controls="pills-grid" aria-selected="true">Grid</button>
         </li>
         <li class="nav-item" role="presentation">
-        <button class="nav-link btn-sm" onclick="initDataRocks('${idTab}')" id="pills-cubo-tab" data-bs-toggle="pill" data-bs-target="#pills-cubo" type="button" role="tab" aria-controls="pills-cubo" aria-selected="false">Cubo</button>
+        <button class="nav-link btn-sm" onclick="initDataRocks('${idTab}')" id="pills-cubo-tab-${idTab}" data-bs-toggle="pill" data-bs-target="#pills-cubo-${idTab}" type="button" role="tab" aria-controls="pills-cubo" aria-selected="false">Cubo</button>
         </li>
     </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade active show" id="pills-grid" role="tabpanel" aria-labelledby="pills-grid-tab">        
+    <div class="tab-content-pills" id="pills-tabContent-${idTab}">
+        <div class="tab-pane fade active show" id="pills-grid-${idTab}" role="tabpanel" aria-labelledby="pills-grid-tab-${idTab}">        
             <!-- <table id="tableGrid" class="table table-sm table-striped table-bordered"></table> -->
             <div id="divTableGrid_${idTab}"></div>
         </div>
-        <div class="tab-pane fade" id="pills-cubo" role="tabpanel" aria-labelledby="pills-cubo-tab">
+        <div class="tab-pane fade" id="pills-cubo-${idTab}" role="tabpanel" aria-labelledby="pills-cubo-tab-${idTab}">
             <div id="wdr-component_${idTab}"></div>
             <div id="googlechart-container_${idTab}" style="height:550px;"></div>
         </div>

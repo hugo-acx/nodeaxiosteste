@@ -324,3 +324,8 @@ a {
   border-radius: 50px;
   padding: 0.4rem 0.5rem;
 }
+
+.tab-content-pills{
+  height: 100%;
+  overflow: auto;
+}

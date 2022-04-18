@@ -3,6 +3,7 @@ $(document).ready(function(){
     // https://www.jqueryscript.net/other/dynamic-tabs-creation-bootstrap-nth.html
     $(".openTab").on("click", function () {      
         var id = this.id;
+        // debugger;
         if (document.getElementById(`nth-tab-${id}`) != null) {
           nthTabs.setActTab(`#nth-tab-${id}`) ;
         }else{
