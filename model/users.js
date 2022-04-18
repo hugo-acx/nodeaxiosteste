@@ -2,7 +2,7 @@ const axios = require( 'axios' ).default;
 const webservice = require( '../middlewares/webservice' );
 
 exports.Auth = async ( login, pass, empresa, estabelecimento ) => {
-        await axios({
+      const retorno =  await axios({
             method: 'POST',
             url: 'Login/getAuthorizeUser',
             data: {login: login,
@@ -23,6 +23,30 @@ exports.Auth = async ( login, pass, empresa, estabelecimento ) => {
         //     .then(function () {
         //     // sempre será executado
         // });
+
+        return retorno;
+}
+
+exports.solicEncerraSessoes = async ( login, pass, empresa, estabelecimento ) => {
+    const retorno =  await axios({
+          method: 'POST',
+          url: 'Login/encerraSessoesAtivasEmpEstab',
+          data: {login: login,
+                   senha: pass,
+                   empresa: empresa,
+                   estabelecimento: estabelecimento},
+          responseType: 'json'
+      })
+      .then(function (retorno) {
+          // manipula o sucesso da requisição
+          return retorno.data;
+      })
+      .catch(function (error) {
+          // manipula erros da requisição
+          console.error(error);
+      })
+
+      return retorno;
 }
 
 exports.Lista = async () => {

@@ -1,20 +1,50 @@
-function login(retorno){
-    if (retorno.status){
+// function login(retorno){
+//     if (retorno.status){
 
-        var dados = {
-            Session: true,
-            Chave: retorno.chave
-        }
-        setLocalStorage('userUID', dados, 1440);
+//         var dados = {
+//             Session: true,
+//             Chave: retorno.chave
+//         }
+//         setLocalStorage('userUID', dados, 1440);
 		
-		IrPara("/frontend/pages/index.html");
-	} else {
-		Notificar(retorno.erro);
-	}
+// 		IrPara("/frontend/pages/index.html");
+// 	} else {
+//         (retorno.status_sessao) ? 
+//             confirm(null, solicEncerraSessoes, "Login ACX", retorno.erro, this)
+//         :
+//             Notificar(retorno.erro)
+// 	}
+// }
+
+function solicEncerraSessoes(){
+
+    var dados = {
+        login : $("#_login").val(),
+        senha : $("#_senha").val(),
+        empresa : $("#_empresa").val(),
+        estabelecimento : $("#_estabelecimento").val()
+    }
+
+    fetch("/solicEncerraSessoes",{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dados)
+    }).then(response =>{
+        return response.json();
+    }).then(data =>{
+        if (data.status) {
+            NotificarAlerta(data.msg, "success");
+        }
+        else{
+            NotificarAlerta(data.erro, "notice");
+        }
+    });
 }
 
 function setOptions(data){
-    
     var empresa = data.vinculo.listaEmpresa;
     jQuery(`#_empresa`).find('option:not(:first)').remove();
     var option =  document.createElement('option');
